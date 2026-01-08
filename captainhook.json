@@ -1,0 +1,58 @@
+{
+    "commit-msg": {
+      "enabled": true,
+      "actions": {
+        "conventional-commit": {
+          "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Rules",
+          "options": [
+            {
+              "regex": "#^(feature|fix|docs|refactor|chore)(\\(.+\\))?:\\s.+#",
+              "error": "Commit message must follow conventional commits format:\ntype(scope?): subject\n\nAllowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert\n\nExamples:\n  feat: add user authentication\n  fix(api): resolve null pointer exception\n  docs: update README with setup instructions"
+            }
+          ],
+          "conditions": []
+        }
+      }
+    },
+    "pre-push": {
+      "enabled": false,
+      "actions": []
+    },
+    "pre-commit": {
+      "enabled": true,
+      "actions": {
+        "pint": {
+          "action": "./vendor/bin/pint",
+          "options": [],
+          "conditions": []
+        },
+        "larastan": {
+          "action": "./vendor/bin/phpstan analyse",
+          "options": [
+            "--memory-limit=2G"
+          ],
+          "conditions": []
+        }
+      }
+    },
+    "prepare-commit-msg": {
+      "enabled": false,
+      "actions": []
+    },
+    "post-commit": {
+      "enabled": false,
+      "actions": []
+    },
+    "post-merge": {
+      "enabled": false,
+      "actions": []
+    },
+    "post-checkout": {
+      "enabled": false,
+      "actions": []
+    },
+    "post-rewrite": {
+      "enabled": false,
+      "actions": []
+    }
+  }
