@@ -3,13 +3,11 @@
       "enabled": true,
       "actions": {
         "conventional-commit": {
-          "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Rules",
-          "options": [
-            {
-              "regex": "#^(feature|fix|docs|refactor|chore)(\\(.+\\))?:\\s.+#",
-              "error": "Commit message must follow conventional commits format:\ntype(scope?): subject\n\nAllowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert\n\nExamples:\n  feat: add user authentication\n  fix(api): resolve null pointer exception\n  docs: update README with setup instructions"
-            }
-          ],
+          "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Regex",
+          "options": {
+            "regex": "#^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\\(.+\\))?:\\s.+#",
+            "error": "Commit message must follow conventional commits format:\ntype(scope?): subject\n\nAllowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert\n\nExamples:\n  feat: add user authentication\n  fix(api): resolve null pointer exception\n  docs: update README with setup instructions"
+          },
           "conditions": []
         }
       }
@@ -22,7 +20,7 @@
       "enabled": true,
       "actions": {
         "pint": {
-          "action": "./vendor/bin/pint",
+          "action": "./vendor/bin/pint --test --dirty",
           "options": [],
           "conditions": []
         },
