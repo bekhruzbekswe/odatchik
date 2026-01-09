@@ -12,10 +12,6 @@
       }
     }
   },
-  "pre-push": {
-    "enabled": false,
-    "actions": []
-  },
   "pre-commit": {
     "enabled": true,
     "actions": {
@@ -25,32 +21,10 @@
         "conditions": []
       },
       "larastan": {
-        "action": "./vendor/bin/phpstan analyse",
-        "options": [
-          "--memory-limit=2G"
-        ],
+        "action": "bash -c 'git diff --cached --name-only --diff-filter=ACM | grep \"\\.php$\" | xargs -r ./vendor/bin/phpstan analyse --memory-limit=2G'",
+        "options": [],
         "conditions": []
       }
     }
-  },
-  "prepare-commit-msg": {
-    "enabled": false,
-    "actions": []
-  },
-  "post-commit": {
-    "enabled": false,
-    "actions": []
-  },
-  "post-merge": {
-    "enabled": false,
-    "actions": []
-  },
-  "post-checkout": {
-    "enabled": false,
-    "actions": []
-  },
-  "post-rewrite": {
-    "enabled": false,
-    "actions": []
   }
 }
