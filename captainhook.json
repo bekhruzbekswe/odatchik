@@ -1,56 +1,56 @@
 {
-    "commit-msg": {
-      "enabled": true,
-      "actions": {
-        "conventional-commit": {
-          "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Regex",
-          "options": {
-            "regex": "#^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\\(.+\\))?:\\s.+#",
-            "error": "Commit message must follow conventional commits format:\ntype(scope?): subject\n\nAllowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert\n\nExamples:\n  feat: add user authentication\n  fix(api): resolve null pointer exception\n  docs: update README with setup instructions"
-          },
-          "conditions": []
-        }
-      }
-    },
-    "pre-push": {
-      "enabled": false,
-      "actions": []
-    },
-    "pre-commit": {
-      "enabled": true,
-      "actions": {
-        "pint": {
-          "action": "./vendor/bin/pint --test --dirty",
-          "options": [],
-          "conditions": []
+  "commit-msg": {
+    "enabled": true,
+    "actions": {
+      "conventional-commit": {
+        "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Regex",
+        "options": {
+          "regex": "#^(feature|fix|docs|refactor|test|chore)(\\(.+\\))?:\\s.+#",
+          "error": "Commit message must follow conventional commits format:\ntype(scope?): subject\n\nAllowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert\n\nExamples:\n  feat: add user authentication\n  fix(api): resolve null pointer exception\n  docs: update README with setup instructions"
         },
-        "larastan": {
-          "action": "./vendor/bin/phpstan analyse",
-          "options": [
-            "--memory-limit=2G"
-          ],
-          "conditions": []
-        }
+        "conditions": []
       }
-    },
-    "prepare-commit-msg": {
-      "enabled": false,
-      "actions": []
-    },
-    "post-commit": {
-      "enabled": false,
-      "actions": []
-    },
-    "post-merge": {
-      "enabled": false,
-      "actions": []
-    },
-    "post-checkout": {
-      "enabled": false,
-      "actions": []
-    },
-    "post-rewrite": {
-      "enabled": false,
-      "actions": []
     }
+  },
+  "pre-push": {
+    "enabled": false,
+    "actions": []
+  },
+  "pre-commit": {
+    "enabled": true,
+    "actions": {
+      "pint-fix": {
+        "action": "bash -c 'git diff --cached --name-only --diff-filter=ACM | grep \"\\.php$\" | xargs -r ./vendor/bin/pint && git diff --cached --name-only --diff-filter=ACM | grep \"\\.php$\" | xargs -r git add'",
+        "options": [],
+        "conditions": []
+      },
+      "larastan": {
+        "action": "./vendor/bin/phpstan analyse",
+        "options": [
+          "--memory-limit=2G"
+        ],
+        "conditions": []
+      }
+    }
+  },
+  "prepare-commit-msg": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-commit": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-merge": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-checkout": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-rewrite": {
+    "enabled": false,
+    "actions": []
   }
+}
