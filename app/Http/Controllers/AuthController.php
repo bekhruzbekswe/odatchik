@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    public function loginForm()
     {
         return view('Auth.login');
     }
@@ -14,7 +14,7 @@ class AuthController extends Controller
     /**
      * Show registration form
      */
-    public function showRegisterForm()
+    public function registerForm()
     {
         return view('Auth.register');
     }

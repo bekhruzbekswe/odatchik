@@ -11,7 +11,11 @@ Route::get('/swagger', function () {
     return view('swagger/index');
 });
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+});
