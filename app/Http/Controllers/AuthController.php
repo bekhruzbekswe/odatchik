@@ -8,7 +8,7 @@ class AuthController extends Controller
 {
     public function loginForm()
     {
-        return view('Auth.login');
+        return view('GoogleAuth.login');
     }
 
     /**
@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function registerForm()
     {
-        return view('Auth.register');
+        return view('GoogleAuth.register');
     }
 
     /**
