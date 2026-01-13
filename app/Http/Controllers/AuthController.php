@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    public function loginForm()
     {
-        return view('Auth.login');
+        return view('GoogleAuth.login');
     }
 
     /**
      * Show registration form
      */
-    public function showRegisterForm()
+    public function registerForm()
     {
-        return view('Auth.register');
+        return view('GoogleAuth.register');
     }
 
     /**
