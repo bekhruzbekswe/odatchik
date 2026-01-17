@@ -35,7 +35,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":6,"type":"USD","balance":12815,"created_at":"2026-01-17T13:46:04.000000Z","updated_at":"2026-01-17T13:46:04.000000Z"},{"id":7,"type":"UZS","balance":34461,"created_at":"2026-01-17T13:46:04.000000Z","updated_at":"2026-01-17T13:46:04.000000Z"}]}'
+        content: '{"data":[{"id":12,"type":"USD","balance":12815,"created_at":"2026-01-17T15:17:21.000000Z","updated_at":"2026-01-17T15:17:21.000000Z"},{"id":13,"type":"UZS","balance":34461,"created_at":"2026-01-17T15:17:21.000000Z","updated_at":"2026-01-17T15:17:21.000000Z"}]}'
         headers: []
         description: ''
     responseFields: []
@@ -105,7 +105,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":8,"type":"USD","balance":54240,"created_at":"2026-01-17T13:46:04.000000Z","updated_at":"2026-01-17T13:46:04.000000Z"}}'
+        content: '{"data":{"id":14,"type":"USD","balance":54240,"created_at":"2026-01-17T15:17:21.000000Z","updated_at":"2026-01-17T15:17:21.000000Z"}}'
         headers: []
         description: ''
       -
@@ -149,7 +149,7 @@ endpoints:
         name: id
         description: 'The ID of the wallet.'
         required: true
-        example: 16
+        example: 11
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -167,7 +167,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      id: 16
+      id: 11
       wallet: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -178,7 +178,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":9,"type":"USD","balance":12815,"created_at":"2026-01-17T13:46:04.000000Z","updated_at":"2026-01-17T13:46:04.000000Z"}}'
+        content: '{"data":{"id":15,"type":"USD","balance":12815,"created_at":"2026-01-17T15:17:21.000000Z","updated_at":"2026-01-17T15:17:21.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -217,7 +217,7 @@ endpoints:
         name: id
         description: 'The ID of the wallet.'
         required: true
-        example: 16
+        example: 11
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -235,7 +235,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      id: 16
+      id: 11
       wallet: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -261,7 +261,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":10,"type":"USD","balance":10087,"created_at":"2026-01-17T13:46:04.000000Z","updated_at":"2026-01-17T13:46:04.000000Z"}}'
+        content: '{"data":{"id":16,"type":"USD","balance":10087,"created_at":"2026-01-17T15:17:21.000000Z","updated_at":"2026-01-17T15:17:21.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -299,7 +299,7 @@ endpoints:
         name: id
         description: 'The ID of the wallet.'
         required: true
-        example: 16
+        example: 11
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -317,7 +317,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      id: 16
+      id: 11
       wallet: 1
     queryParameters: []
     cleanQueryParameters: []
