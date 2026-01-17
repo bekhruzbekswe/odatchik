@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\ChallengeFrequency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -49,5 +50,10 @@ class Challenge extends Model
             'price_early_leave' => 'integer',
             'coins_per_checkin' => 'integer',
         ];
+    }
+
+    public function checkings(): HasMany
+    {
+        return $this->hasMany(Checkin::class);
     }
 }
