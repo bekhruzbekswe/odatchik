@@ -58,4 +58,9 @@ class User extends Authenticatable implements OAuthenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function checkins(): HasMany
+    {
+        return $this->hasMany(Checkin::class);
+    }
 }
