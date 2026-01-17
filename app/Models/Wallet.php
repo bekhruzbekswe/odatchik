@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\WalletType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,15 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Wallet extends Model
 {
     use HasFactory;
-
-    /**
-     * Wallet types available in the system.
-     */
-    public const TYPE_USD = 'USD';
-
-    public const TYPE_UZS = 'UZS';
-
-    public const TYPE_COIN = 'COIN';
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +31,7 @@ class Wallet extends Model
     {
         return [
             'balance' => 'integer',
+            'type' => WalletType::class,
         ];
     }
 
