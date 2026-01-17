@@ -20,33 +20,28 @@ class GoogleAuthController extends Controller
      */
     public function handleGoogleCallback()
     {
-        try {
-            $googleUser = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->user();
 
-            // Find or create user by oauth credentials
-            $user = User::firstOrCreate(
-                [
-                    'oauth_provider' => 'google',
-                    'oauth_id' => $googleUser->getId(),
-                ],
-                [
-                    'name' => $googleUser->getName(),
-                    'email' => $googleUser->getEmail(),
-                    'email_verified_at' => now(),
-                ]
-            );
+        // Find or create user by oauth credentials
+        $user = User::firstOrCreate(
+            [
+                'oauth_provider' => 'google',
+                'oauth_id' => $googleUser->getId(),
+            ],
+            [
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'email_verified_at' => now(),
+            ]
+        );
 
-            // Create access token
-            $token = $user->createToken('Google OAuth Token')->accessToken;
+        // Create access token
+        $token = $user->createToken('Google OAuth Token')->accessToken;
 
-            // Redirect to a page that will store the token and redirect to dashboard
-            return view('GoogleAuth.callback', [
-                'token' => $token,
-                'user' => $user,
-            ]);
-
-        } catch (\Exception $e) {
-            return redirect('/login')->with('error', 'Failed to login with Google. Please try again.');
-        }
+        // Redirect to a page that will store the token and redirect to dashboard
+        return view('GoogleAuth.callback', [
+            'token' => $token,
+            'user' => $user,
+        ]);
     }
 }
