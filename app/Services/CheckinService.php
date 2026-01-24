@@ -5,10 +5,11 @@ namespace App\Services;
 use App\Models\Checkin;
 use Illuminate\Support\Collection;
 
-class CheckinService{
-
+class CheckinService
+{
     /**
      * List of checkings
+     *
      * @return Collection<int , Checkin>
      */
     public function index(): Collection
@@ -25,7 +26,7 @@ class CheckinService{
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function store(array $data): Checkin
     {
@@ -33,9 +34,9 @@ class CheckinService{
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
-    public function update(array $data , Checkin $checkin): Checkin
+    public function update(array $data, Checkin $checkin): Checkin
     {
         $checkin->update($data);
 

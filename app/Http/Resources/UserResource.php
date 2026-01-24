@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Resources;
 
-use App\Models\Checkin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin Checkin
+ * @mixin User
  */
-class CheckinResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,9 +19,11 @@ class CheckinResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user' => new UserResource($this->user),
-            'challenge' => ChallengeResource::collection($this->challenge),
-            'status' => $this->status,
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'oauth_id' => $this->oauth_id,
+            'telegram_id' => $this->telegram_id,
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),
         ];
