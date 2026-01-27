@@ -13,7 +13,6 @@ class AuthService
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
-
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -22,29 +21,26 @@ class AuthService
 
         return response()->json([
             'message' => 'Registered successfully',
-            'user' => $user
+            'user' => $user,
         ], 201);
     }
 
     public function login(LoginRequest $request)
     {
         $data = $request->validated();
-
         $user = User::where('email', $data['email'])->first();
 
-        if (!$user || !Hash::check($data['password'] ,  $user->password)) {
+        if (!$user || !Hash::check($data['password'], $user->password)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        // Create token 
+        // Create token
         $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->accessToken;
 
         return response()->json([
-            'access_token' => $token,
+            'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
-            'expires_at' => $tokenResult->token->expires_at,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -55,10 +51,14 @@ class AuthService
 
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        $user = $request->user();
+        $token = $user->token();
+
+        assert($token instanceof \Laravel\Passport\Token);
+        $token->revoke();
 
         return response()->json([
-            'message' => 'Logged out'
+            'message' => 'Logged out',
         ]);
     }
 }
